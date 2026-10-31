@@ -16,10 +16,12 @@ import {
 type Stage = "welcome" | "device" | "interview" | "complete";
 
 export const Route = createFileRoute("/")({
-  validateSearch: (search: Record<string, unknown>): { role?: string; name?: string } => ({
-    role: typeof search["role"] === "string" ? search["role"] : undefined,
-    name: typeof search["name"] === "string" ? search["name"] : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { role?: string; name?: string } => {
+    const result: { role?: string; name?: string } = {};
+    if (typeof search["role"] === "string") result.role = search["role"];
+    if (typeof search["name"] === "string") result.name = search["name"];
+    return result;
+  },
   head: () => ({
     meta: [
       { title: "AI Video Interview | Candidate Assessment" },
