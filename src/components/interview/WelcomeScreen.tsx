@@ -2,7 +2,7 @@ import { Camera, Mic, Sparkles, Volume2, Wifi } from "lucide-react";
 
 interface WelcomeScreenProps {
   title: string;
-  candidateName?: string;
+  candidateName?: string | undefined;
   loading: boolean;
   permissionBlocked: boolean;
   onStart: () => void;

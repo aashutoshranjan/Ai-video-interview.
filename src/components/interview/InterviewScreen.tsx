@@ -118,7 +118,7 @@ export function InterviewScreen({ stream, questions, title, onFinished }: Interv
 
   // Speak each question as it appears.
   useEffect(() => {
-    speakQuestion(questions[questionIndex]);
+    speakQuestion(questions[questionIndex] ?? "");
     return () => stopSpeaking();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionIndex]);
@@ -145,7 +145,7 @@ export function InterviewScreen({ stream, questions, title, onFinished }: Interv
     }
   }, [stream]);
 
-  const question = questions[questionIndex];
+  const question = questions[questionIndex] ?? "";
   const speaking = aiState === "speaking";
 
   return (

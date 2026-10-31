@@ -16,9 +16,9 @@ import {
 type Stage = "welcome" | "device" | "interview" | "complete";
 
 export const Route = createFileRoute("/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    role: typeof search.role === "string" ? search.role : undefined,
-    name: typeof search.name === "string" ? search.name : undefined,
+  validateSearch: (search: Record<string, unknown>): { role?: string; name?: string } => ({
+    role: typeof search["role"] === "string" ? search["role"] : undefined,
+    name: typeof search["name"] === "string" ? search["name"] : undefined,
   }),
   head: () => ({
     meta: [

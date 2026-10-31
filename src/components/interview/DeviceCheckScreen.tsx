@@ -6,7 +6,7 @@ import { AudioMeter } from "./AudioMeter";
 interface DeviceCheckScreenProps {
   stream: MediaStream;
   title: string;
-  candidateName?: string;
+  candidateName?: string | undefined;
   onBegin: () => void;
   onBack: () => void;
 }

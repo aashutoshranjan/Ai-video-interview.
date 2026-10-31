@@ -22,7 +22,8 @@ export function AudioMeter({ stream }: { stream: MediaStream | null }) {
       analyser.getByteTimeDomainData(data);
       let peak = 0;
       for (let i = 0; i < data.length; i++) {
-        peak = Math.max(peak, Math.abs(data[i] - 128) / 128);
+        const sample = data[i] ?? 128;
+        peak = Math.max(peak, Math.abs(sample - 128) / 128);
       }
       if (fillRef.current) {
         fillRef.current.style.width = `${Math.min(100, peak * 260)}%`;
